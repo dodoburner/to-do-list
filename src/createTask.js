@@ -3,7 +3,7 @@ const form = document.querySelector('form')
 let tasks = JSON.parse(localStorage.getItem('storageTasks'));
 tasks = (tasks === null) ? [] :  tasks
 import addTask from './addTask';
-import Task from './classConstructor';
+import Task from './taskConstructor';
 
 function submit() {
   form.addEventListener('submit', (e) => {

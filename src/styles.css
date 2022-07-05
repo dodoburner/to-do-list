@@ -25,7 +25,8 @@ p {
   padding: 12px;
 }
 
-.task-input {
+.task-input,
+.task-edit {
   width: 100%;
   border: none;
 }
@@ -34,7 +35,8 @@ p {
   font-style: italic;
 }
 
-.task-input:focus {
+.task-input:focus,
+.task-edit:focus {
   outline: none;
   border: none;
 }
@@ -79,4 +81,8 @@ form {
   padding: 16px;
   text-align: center;
   cursor: pointer;
+}
+
+.none {
+  display: none;
 }
