@@ -28,8 +28,6 @@ p {
 .task-input {
   width: 100%;
   border: none;
-  border-top: 1px solid gray;
-  padding: 12px;
 }
 
 .task-input::placeholder {
@@ -51,8 +49,26 @@ p {
   color: gray;
 }
 
-.fa-solid {
+.three-dots {
   margin-left: auto;
+  color: gray;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-top: 1px solid gray;
+}
+
+.submit-task {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.fa-arrow-left {
+  font-size: 10px;
   color: gray;
 }
 

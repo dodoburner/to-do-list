@@ -6,7 +6,7 @@ function addTask(el) {
   task.innerHTML = `
     <input class="check" type="checkbox">
     <p class="description" >${el.description}</p>
-    <i class="fa-solid fa-ellipsis-vertical"></i>
+    <i class="fa-solid fa-ellipsis-vertical three-dots"></i>
   `;
   todoList.appendChild(task);
 
