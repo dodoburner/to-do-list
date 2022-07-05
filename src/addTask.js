@@ -33,7 +33,6 @@ function addTask(el) {
     }) 
     localStorage.setItem('storageTasks', JSON.stringify(tasks));
     todoList.removeChild(task)
-    console.log(tasks)
   })
   
 }

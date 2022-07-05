@@ -14,7 +14,6 @@ function submit() {
       localStorage.setItem('storageTasks', JSON.stringify(tasks));
       addTask(task)
       taskInput.value = ''
-      console.log(tasks)
     }
   })
 }
