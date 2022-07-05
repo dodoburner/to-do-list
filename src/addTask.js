@@ -25,6 +25,14 @@ function addTask(el) {
     task.children[2].classList.toggle('none')
   })
 
+  task.children[1].addEventListener('change', () => {
+    const todoListArray = Array.from(document.getElementById('todo-list').children)
+    const index = todoListArray.indexOf(task)
+    let tasks = JSON.parse(localStorage.getItem('storageTasks'));
+    tasks[index].description = task.children[1].value;
+    localStorage.setItem('storageTasks', JSON.stringify(tasks));
+  })
+
   task.children[3].addEventListener('click', () => {
     let tasks = JSON.parse(localStorage.getItem('storageTasks'));
     tasks.splice(Array.from(todoList.children).indexOf(task), 1);
