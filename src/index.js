@@ -1,5 +1,5 @@
 import './styles.css';
-import addTask from './addTask.js';
+import addTask from './addTask';
 
 const tasks = [
   {
