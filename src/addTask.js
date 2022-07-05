@@ -1,6 +1,7 @@
 const todoList = document.getElementById('todo-list');
 
 function addTask(el) {
+  //creating and appending the task to html//
   const task = document.createElement('li');
   task.classList.add('task');
   task.innerHTML = `
@@ -11,11 +12,21 @@ function addTask(el) {
   `;
   todoList.appendChild(task);
 
-  task.children[0].addEventListener('click', () => {
-    task.children[1].classList.toggle('checked');
+  const checkbox = task.children[0]
+  const input = task.children[1]
+  const trashIcon = task.children[3]
+
+  //checkbox//
+  checkbox.addEventListener('click', () => {
+    const todoListArray = Array.from(document.getElementById('todo-list').children)
+    const index = todoListArray.indexOf(task)
+    let tasks = JSON.parse(localStorage.getItem('storageTasks'));
+    tasks[index].completed = checkbox.checked;
+    input.classList.toggle('checked');
   });
  
-  task.children[1].addEventListener('click', () => {
+  //adding the trash icon//
+  input.addEventListener('click', () => {
     const allTasks = document.querySelectorAll('.task')
     allTasks.forEach((task) => {
       task.children[3].classList.add('none')
@@ -25,15 +36,17 @@ function addTask(el) {
     task.children[2].classList.toggle('none')
   })
 
-  task.children[1].addEventListener('change', () => {
+  //editing the task value//
+  input.addEventListener('change', () => {
     const todoListArray = Array.from(document.getElementById('todo-list').children)
     const index = todoListArray.indexOf(task)
     let tasks = JSON.parse(localStorage.getItem('storageTasks'));
-    tasks[index].description = task.children[1].value;
+    tasks[index].description = input.value;
     localStorage.setItem('storageTasks', JSON.stringify(tasks));
   })
 
-  task.children[3].addEventListener('click', () => {
+  //removing the task//
+  trashIcon.addEventListener('click', () => {
     let tasks = JSON.parse(localStorage.getItem('storageTasks'));
     tasks.splice(Array.from(todoList.children).indexOf(task), 1);
     tasks.forEach((task, index) => {
