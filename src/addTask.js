@@ -5,7 +5,7 @@ function addTask(el) {
   const task = document.createElement('li');
   task.classList.add('task');
   task.innerHTML = `
-    <input class="check" type="checkbox">
+    <input class="check" type="checkbox" ${el.completed ? 'checked' : ''}>
     <input class="task-edit" type="text" class="description" value="${el.description}">
     <i class="fa-solid fa-ellipsis-vertical three-dots"></i>
     <i class="fa-solid fa-trash-can none"></i>
@@ -17,11 +17,16 @@ function addTask(el) {
   const trashIcon = task.children[3];
 
   // checkbox//
+  if (checkbox.hasAttribute('checked')) {
+    input.classList.add('checked');
+  }
+
   checkbox.addEventListener('click', () => {
     const todoListArray = Array.from(document.getElementById('todo-list').children);
     const index = todoListArray.indexOf(task);
     const tasks = JSON.parse(localStorage.getItem('storageTasks'));
     tasks[index].completed = checkbox.checked;
+    localStorage.setItem('storageTasks', JSON.stringify(tasks));
     input.classList.toggle('checked');
   });
 
