@@ -34,7 +34,7 @@ p {
   font-style: italic;
 }
 
-.task-input:active {
+.task-input:focus {
   outline: none;
   border: none;
 }
@@ -52,6 +52,7 @@ p {
 .three-dots {
   margin-left: auto;
   color: gray;
+  cursor: pointer;
 }
 
 form {
