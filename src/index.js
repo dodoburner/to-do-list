@@ -1,10 +1,10 @@
 import './styles.css';
 import addTask from './addTask';
-import setStorage from './setStorage'
-import submit from './createTask'
+import setStorage from './setStorage';
+import submit from './createTask';
 import clearAll from './clearAll';
 
-let tasks = [];
+const tasks = [];
 tasks.sort((a, b) => a.index - b.index);
 
 function populateTodoList() {
@@ -13,7 +13,7 @@ function populateTodoList() {
   });
 }
 
-setStorage()
-submit()
+setStorage();
+submit();
 populateTodoList();
 clearAll();
