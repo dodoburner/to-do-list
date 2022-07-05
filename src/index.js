@@ -24,14 +24,7 @@ const tasks = [
   },
 ];
 
-tasks.sort((a, b) => {
-  if (a.index > b.index) {
-    return 1;
-  } if (a.index < b.index) {
-    return -1;
-  }
-  return 0;
-});
+tasks.sort((a, b) => a.index - b.index);
 
 function populateTodoList() {
   tasks.forEach((el) => {
