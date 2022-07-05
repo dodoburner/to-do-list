@@ -30,15 +30,11 @@ tasks.sort((a,b) => {
 })
 const todoList = document.getElementById('todo-list')
 import './styles.css';
+import addTask from './addTask'
 
 function populateTodoList() {
   tasks.forEach((el) => {
-    let task = document.createElement('li');
-    task.classList.add('task');
-    task.innerHTML = `
-     <p>${el.description}</p
-    `;
-    todoList.appendChild(task)
+    addTask(el)
   })
 }
 
