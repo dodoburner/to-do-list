@@ -3,10 +3,18 @@ const clearBnt = document.querySelector('.clear');
 function clearAll() {
   clearBnt.addEventListener('click', () => {
     const todoList = document.getElementById('todo-list');
-    while (todoList.firstChild) {
-      todoList.removeChild(todoList.firstChild);
-    }
-    localStorage.clear();
+    const todoListArray = Array.from(todoList.children);
+    let tasks = JSON.parse(localStorage.getItem('storageTasks'));
+
+    todoListArray.forEach((task) => {
+      const input = task.children[1];
+      if (input.classList.contains('checked')) {
+        todoList.removeChild(task);
+      }
+    });
+
+    tasks = tasks.filter((task) => !task.completed);
+    localStorage.setItem('storageTasks', JSON.stringify(tasks));
   });
 }
 
