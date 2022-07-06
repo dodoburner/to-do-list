@@ -1,9 +1,8 @@
 import './styles.css';
-import addTask from './addTask';
-import setStorage from './setStorage';
+import renderTodo from './renderTodo';
 import submit from './createTask';
 import clearAll from './clearAll';
 
-setStorage();
+renderTodo();
 submit();
 clearAll();

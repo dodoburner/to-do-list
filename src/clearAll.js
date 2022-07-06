@@ -4,7 +4,6 @@ function clearAll() {
   clearBnt.addEventListener('click', () => {
     const todoList = document.getElementById('todo-list');
     const todoListArray = Array.from(todoList.children);
-    let tasks = JSON.parse(localStorage.getItem('storageTasks'));
 
     todoListArray.forEach((task) => {
       const input = task.children[1];
@@ -13,6 +12,7 @@ function clearAll() {
       }
     });
 
+    let tasks = JSON.parse(localStorage.getItem('storageTasks'));
     tasks = tasks.filter((task) => !task.completed);
     localStorage.setItem('storageTasks', JSON.stringify(tasks));
   });

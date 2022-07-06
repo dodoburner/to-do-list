@@ -1,6 +1,6 @@
 import addTask from './addTask';
 
-const setStorage = () => {
+const renderTodo = () => {
   const dataFromStorage = JSON.parse(localStorage.getItem('storageTasks'));
   const tasks = (dataFromStorage === null) ? [] : dataFromStorage;
   tasks.forEach((task) => {
@@ -8,4 +8,4 @@ const setStorage = () => {
   });
 };
 
-export default setStorage;
+export default renderTodo;
