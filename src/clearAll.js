@@ -3,17 +3,17 @@ const clearBnt = document.querySelector('.clear');
 function clearAll() {
   clearBnt.addEventListener('click', () => {
     const todoList = document.getElementById('todo-list');
-    const todoListArray = Array.from(todoList.children)
+    const todoListArray = Array.from(todoList.children);
     let tasks = JSON.parse(localStorage.getItem('storageTasks'));
 
-    todoListArray.forEach((task, index) => {
+    todoListArray.forEach((task) => {
       const input = task.children[1];
       if (input.classList.contains('checked')) {
-        todoList.removeChild(task)
+        todoList.removeChild(task);
       }
-    })
-    
-    tasks = tasks.filter((task) => !task.completed)
+    });
+
+    tasks = tasks.filter((task) => !task.completed);
     localStorage.setItem('storageTasks', JSON.stringify(tasks));
   });
 }
