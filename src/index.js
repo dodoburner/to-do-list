@@ -1,37 +1,11 @@
 import './styles.css';
 import addTask from './addTask';
+import setStorage from './setStorage';
+import submit from './createTask';
+import clearAll from './clearAll';
 
-const tasks = [
-  {
-    description: 'buy ducktape',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'conquer the world',
-    completed: true,
-    index: 4,
-  },
-  {
-    description: 'finish the todo list activity',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'meet up with Anja in the afternoon',
-    completed: false,
-    index: 2,
-  },
-];
-
-tasks.sort((a, b) => {
-  if (a.index > b.index) {
-    return 1;
-  } if (a.index < b.index) {
-    return -1;
-  }
-  return 0;
-});
+const tasks = [];
+tasks.sort((a, b) => a.index - b.index);
 
 function populateTodoList() {
   tasks.forEach((el) => {
@@ -39,4 +13,7 @@ function populateTodoList() {
   });
 }
 
+setStorage();
+submit();
 populateTodoList();
+clearAll();
