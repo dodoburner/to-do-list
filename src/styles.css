@@ -55,7 +55,7 @@ p {
 .three-dots {
   margin-left: auto;
   color: gray;
-  cursor: pointer;
+  cursor: move;
 }
 
 form {
@@ -86,4 +86,8 @@ form {
 
 .none {
   display: none;
+}
+
+.dragging {
+  border: 1px solid blue;
 }

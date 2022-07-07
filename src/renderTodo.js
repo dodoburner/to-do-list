@@ -1,4 +1,5 @@
 import addTask from './addTask';
+import Dragging from './dragging';
 
 const renderTodo = () => {
   const tasks = JSON.parse(localStorage.getItem('storageTasks')) || [];

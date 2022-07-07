@@ -1,9 +1,11 @@
 const todoList = document.getElementById('todo-list');
+import Dragging from "./dragging";
 
 function addTask(el) {
   // creating and appending the task to html//
   const task = document.createElement('li');
   task.classList.add('task');
+  task.setAttribute('draggable', true)
   task.innerHTML = `
     <input class="check" type="checkbox" ${el.completed ? 'checked' : ''}>
     <input class="task-edit" type="text" class="description" value="${el.description}">
@@ -14,6 +16,7 @@ function addTask(el) {
 
   const checkbox = task.children[0];
   const input = task.children[1];
+  const moveIcon =  task.children[2]
   const trashIcon = task.children[3];
 
   // checkbox//
@@ -60,6 +63,11 @@ function addTask(el) {
     localStorage.setItem('storageTasks', JSON.stringify(tasks));
     todoList.removeChild(task);
   });
+
+  const dragging = new Dragging
+  dragging.dragStart(task)
+  dragging.dragEnd(task)
+  dragging.dragOver(todoList)
 }
 
 export default addTask;
