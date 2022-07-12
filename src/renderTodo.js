@@ -1,8 +1,7 @@
 import addTask from './addTask';
 
 const renderTodo = () => {
-  const dataFromStorage = JSON.parse(localStorage.getItem('storageTasks'));
-  const tasks = (dataFromStorage === null) ? [] : dataFromStorage;
+  const tasks = JSON.parse(localStorage.getItem('storageTasks')) || [];
   tasks.forEach((task) => {
     addTask(task);
   });
