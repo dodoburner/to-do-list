@@ -3,7 +3,7 @@ const clearBnt = document.querySelector('.clear');
 function clearAll() {
   clearBnt.addEventListener('click', () => {
     const todoList = document.getElementById('todo-list');
-    const todoListArray = Array.from(todoList.children);
+    const todoListArray = [...todoList.children];
 
     todoListArray.forEach((task) => {
       const input = task.children[1];

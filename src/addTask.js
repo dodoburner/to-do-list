@@ -8,7 +8,7 @@ function addTask(el) {
     <input class="check" type="checkbox" ${el.completed ? 'checked' : ''}>
     <input class="task-edit" type="text" class="description" value="${el.description}">
     <i class="fa-solid fa-ellipsis-vertical three-dots"></i>
-    <i class="fa-solid fa-trash-can none"></i>
+    <button class='delete-btn'><i class="fa-solid fa-trash-can none"></i></button>   
   `;
   todoList.appendChild(task);
 
@@ -22,7 +22,7 @@ function addTask(el) {
   }
 
   checkbox.addEventListener('click', () => {
-    const todoListArray = Array.from(document.getElementById('todo-list').children);
+    const todoListArray = [...todoList.children];
     const index = todoListArray.indexOf(task);
     const tasks = JSON.parse(localStorage.getItem('storageTasks'));
     tasks[index].completed = checkbox.checked;
@@ -30,20 +30,9 @@ function addTask(el) {
     input.classList.toggle('checked');
   });
 
-  // adding the trash icon//
-  input.addEventListener('click', () => {
-    const allTasks = document.querySelectorAll('.task');
-    allTasks.forEach((task) => {
-      task.children[3].classList.add('none');
-      task.children[2].classList.remove('none');
-    });
-    task.children[3].classList.toggle('none');
-    task.children[2].classList.toggle('none');
-  });
-
   // editing the task value//
   input.addEventListener('change', () => {
-    const todoListArray = Array.from(document.getElementById('todo-list').children);
+    const todoListArray = [...todoList.children];
     const index = todoListArray.indexOf(task);
     const tasks = JSON.parse(localStorage.getItem('storageTasks'));
     tasks[index].description = input.value;
@@ -53,7 +42,7 @@ function addTask(el) {
   // removing the task//
   trashIcon.addEventListener('click', () => {
     const tasks = JSON.parse(localStorage.getItem('storageTasks'));
-    tasks.splice(Array.from(todoList.children).indexOf(task), 1);
+    tasks.splice([...todoList.children].indexOf(task), 1);
     tasks.forEach((task, index) => {
       task.index = index;
     });
