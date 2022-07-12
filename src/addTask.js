@@ -22,7 +22,7 @@ function addTask(el) {
   }
 
   checkbox.addEventListener('click', () => {
-    const todoListArray = Array.from(document.getElementById('todo-list').children);
+    const todoListArray = [...todoList.children]
     const index = todoListArray.indexOf(task);
     const tasks = JSON.parse(localStorage.getItem('storageTasks'));
     tasks[index].completed = checkbox.checked;
@@ -43,7 +43,7 @@ function addTask(el) {
 
   // editing the task value//
   input.addEventListener('change', () => {
-    const todoListArray = Array.from(document.getElementById('todo-list').children);
+    const todoListArray = [...todoList.children]
     const index = todoListArray.indexOf(task);
     const tasks = JSON.parse(localStorage.getItem('storageTasks'));
     tasks[index].description = input.value;
@@ -53,7 +53,7 @@ function addTask(el) {
   // removing the task//
   trashIcon.addEventListener('click', () => {
     const tasks = JSON.parse(localStorage.getItem('storageTasks'));
-    tasks.splice(Array.from(todoList.children).indexOf(task), 1);
+    tasks.splice([...todoList.children].indexOf(task), 1);
     tasks.forEach((task, index) => {
       task.index = index;
     });
